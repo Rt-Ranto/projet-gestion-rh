@@ -28,6 +28,7 @@ ainsi la repartition des departements dans une entreprise ou etablissement*
 
 ## 📸 Aperçu
 <img width="1366" height="766" alt="GRH Admin - Google Chrome 17_03_2026 17_26_29" src="https://github.com/user-attachments/assets/c937144e-e014-46f8-bff3-0c1d07ddaffc" />
+<img width="1366" height="768" alt="GRH Admin - Google Chrome 17_03_2026 18_34_37" src="https://github.com/user-attachments/assets/3dc47e85-3c07-485f-8b8b-51a1f7a4680f" />
 <img width="1366" height="766" alt="GRH Admin - Google Chrome 17_03_2026 17_24_38" src="https://github.com/user-attachments/assets/b54d273d-a06e-4b6b-9ae7-623f89b006e4" />
 <img width="1366" height="766" alt="GRH Admin - Google Chrome 17_03_2026 17_24_48" src="https://github.com/user-attachments/assets/0a9e18a8-c2ae-4cac-bb21-f38c7632ed2f" />
 <img width="1366" height="766" alt="GRH Admin - Google Chrome 17_03_2026 17_25_36" src="https://github.com/user-attachments/assets/b4599896-57fd-4c7e-8b1f-c95399f63851" />
@@ -36,7 +37,10 @@ ainsi la repartition des departements dans une entreprise ou etablissement*
 
 ## ⚙️ Installation
 1. Cloner le projet : `git clone [URL]`
-2.  : `git clone [URL]`
-1. Cloner le projet : `git clone [URL]`
-1. Cloner le projet : `git clone [URL]`
+2. Lancer l'environnement : `pipenv shell`
+3. Migrer la base de donneé : `pyhton manage.py migrate puis pyhton manage.py makemigrations`
+4. Créer un superUser : `python manage.py createsuperuser puis remplisser username, email, password`
+5. Configurer .env voir le .env.example
+6. Lancer le server : `python manage.py runserver`
+7. Connecter avec le superUser
 
