@@ -8,9 +8,9 @@ ainsi la repartition des departements dans une entreprise ou etablissement*
 
 ## ✨ Fonctionnalités
 - [x] Interface pour l'administration (HTML/CSS/JavaScript + Bootstrap5)
-- [x] Gestion des données du personnel (Django + postgreSQL)
-- [x] Affichage par graph de la repartition des personnels (Chart.js)
-- [x] Système d'authentification des utilisateurs
+- [x] Manipulation des données des personnels (Django + postgreSQL)
+- [x] Affichage par graph de la repartition et statistique des personnels (Chart.js)
+- [x] Système d'authentification de l'admin
 - [x] Recherch et filtre des personnels 
 - [x] Modification,Suppression d'une employé 
 - [x] Ajout d'une simple employé
