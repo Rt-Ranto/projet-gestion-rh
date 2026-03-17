@@ -1,0 +1,155 @@
+@font-face {
+  font-family: font1;
+  src: url(../font/Brand___.ttf);
+}
+@font-face {
+  font-family: font2;
+  src: url(../font/ARIAL.TTF);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* background: linear-gradient(to bottom right, #00b09b, #96c93d); */
+    background-color: #470cd0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* body::before{
+    content: " ";
+    position: absolute;
+    left: 0px;
+    top : 0px;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(1, 16, 12, 0.667); */
+    /* z-index: -1; */
+/* } */ 
+.container{
+  position: absolute;
+  top: 15%;
+  background-color: #fff;
+  border-radius: 15px;
+  min-width: 250px;
+  min-height: 350px;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+}
+.form-group {
+    position: relative;
+    /* margin: 3px 0; */
+    /* margin-bottom: 35px; */
+    width: 300px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 40px;
+  padding: 12px 10px;
+  background: transparent;
+  font-size: 16px;
+  border: 2px solid #470cd0;
+  /* border-top: none; */
+  /* border-left: none; */
+  /* border-right: none; */
+  border-radius: 10px;
+  outline: none;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color: #777;
+  font-size: 14px;
+  font-family: font2;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: 0.3s ease;
+  background: transparent;
+  padding: 0 5px;
+}
+
+/* Quand on clique ou qu'il y a du texte */
+.form-group input:focus + label,
+.form-group input:valid + label {
+  top: -0.5px;
+  font-size: 12px;
+  color: #080222;
+  background-color: #fff;
+  border-width: 2px;
+  border-color: #080222;
+  
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+.input-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+.le_form{
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 45px;
+    background: transparent ;
+    /* backdrop-filter: blur(30px); */
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 0px;
+  padding-left: 10%;
+ 
+}
+
+.title h4{
+  font-size: 25px;
+  font-family: font1;
+  color: #1b043c;
+  margin-left: 5px;
+}
+.tt{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(-15%);
+}
+.tt h2{
+  padding-left: 10%;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: font2;
+  letter-spacing: 0.08rem;
+  color: rgb(1, 13, 41);
+}
+.card-body{
+  /* margin-top: 5px; */
+  padding-top: 0px;
+  /* padding: ; */
+}

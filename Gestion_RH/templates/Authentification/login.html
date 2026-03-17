@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'Gestion_RH/css/loginStyle.css' %}?v=2">
+    <link rel="shortcut icon" href="{% static 'Gestion_RH/img/R.png' %}" type="image/x-icon">
+    <title>Gestion_RH_login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="le_form">
+            <div class="tt">
+                <div class="title">
+                    <img src="{% static 'Gestion_RH/img/R.png' %}" alt="logo" width="70px", height="70px">
+                    <h4>GRH Admin</h4>
+                </div>
+                <h2>Veuiller entrer votre Authentification.</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <input type="text" name="username" id="inp" required>
+                            <label for="username" id="lb">Nom de l'Admin...</label>
+                            <i class="fa-solid fa-user input-icon"></i>
+                        </div>  
+                        {% if error_username %}
+                            <small class="text-danger">{{ error_username}}</small>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group password-group">
+                            <input type="password" name="password" id="password" class="inp1" required>
+                            <label for="password" id="lb1">Mot de passe...</label>
+                            <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()"></i>
+                        </div>
+                        
+                        {% if error_password %}
+                            <small class="text-danger">{{ error_password }}</small>
+                        {% endif %}
+                    </div>
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary w-100 h-45">
+                        Connecter
+                    </button>
+                </form>        
+            </div>
+    </div>
+    <script src="{% static 'Gestion_RH/js/myScript.js' %}?v=2"></script>    
+</body>
+</html>

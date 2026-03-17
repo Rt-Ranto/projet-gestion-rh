@@ -1,0 +1,270 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'Gestion_RH/css/homeStyle.css'%} ?v=2">
+    <link rel="shortcut icon" href="{% static 'Gestion_RH/img/R.png' %}" type="image/x-icon">
+    <title>GRH Admin</title>
+</head>
+<body>
+    <div id="spinner" class="spinner hidden"></div>
+    <div class="contenu">
+        <div class="menu">
+            <div class="tete_menu">
+                <img src="{% static 'Gestion_RH/img/R.png' %}" >
+                <h1>GRH Admin</h1>
+            </div>
+            <div class="mm">
+                <a href="{% url 'ajouter' %}"><i class="fa-solid fa-plus-circle fa-2x"></i>Ajouter</a>
+                <a href="#"><i class="fa-solid fa-envelope fa-2x"></i>Email</a>
+                <a href="{% url 'conge' %}"><i class="fa-solid fa-calendar-days fa-2x" style="margin-right: 25px;"></i>Congé</a>
+                <a href="#"><i class="fa-solid fa-bed fa-2x"></i> Repos</a>
+                <a href="#"><i class="fa-solid fa-gear fa-2x"></i> Paramètres</a>
+            </div>
+            <div class="mmm">
+                <a href="#"><i class="fa-solid fa-circle-question fa-2x"></i> Aide</a>
+                <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket fa-2x"></i>Déconnexion</a>
+            </div>
+        </div>
+        <div class="corps">
+            <div class="tete">
+                <div class="bars_menu">
+                    <i class="fa fa-bars fa-2x btn_mn"></i>
+                </div>
+                <form action="{% url 'rechercher' %}" method="post">
+                    {% csrf_token %}
+                    <div class="entrer_recherche">
+                        <div class="inputfotsn">
+                            <input class="form-control me-2" type="search" name="recherch" placeholder="Recherch...." aria-label="Search" id="recherch1">
+                        </div>
+                        <button type="submit" class="btn_rech"><i class="fa-solid fa-magnifying-glass fa-lg input-icon"></i></button>
+                    </div>
+                </form>
+                <div class="user_prof">
+                    {% for e in username %}
+                        <button class="account_btn">  
+                            {% if e.photo %}
+                                <img src="{{ e.photo.url }}" alt="{{ e.nom }}">
+                            {% else %}
+                                <img src="{% static 'Gestion_RH/img/R.png' %}" alt="photo par défaut">
+                            {% endif %}
+                        
+                        </button>
+                        <p>{{ e.username }}</p>
+                    {% endfor%}
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="card card1"><h1>card1</h1></div>
+                <div class="card card2">
+                  <div class="sous-div2">
+                    {% if bar_data %}
+                        <canvas id="areaChart"></canvas>
+                        {{ bar_data|json_script:"bar_data"}}
+                    {% else %}
+                        <h1>donné vide</h1>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="card card3">
+                  <div class="sous-div3">
+                    {% if pie_data %}
+                        <canvas id="donutChart"></canvas>
+                        {{ pie_data|json_script:"pie_data" }}
+                    {% else %}
+                        <h1>rien</h1>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="card card4">
+                  {% if s_sexe%}
+                    <div class="sous-div4">
+                      <div class="sexe">
+                        <i class="fa-solid fa-person fa-3x" style="color: #56a7f3da;"></i>
+                        
+                      </div>
+                      <div class="stat">
+                        <h1>{{s_sexe.nbr_homme_pourcentage}}%</h1>
+                        <div class="bb">
+                            <p class="bar1" style="--w1: {{ s_sexe.nbr_homme_pourcentage|default:0 }}%"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sous-div44">
+                      <div class="stat">
+                        <h1>{{s_sexe.nbr_femme_pourcentage}}%</h1>
+                        <div class="bb1">
+                            <p class="bar2" style="--w2: {{ s_sexe.nbr_femme_pourcentage|default:0 }}%"></p>
+                        </div>
+                      </div>
+                      <div class="sexe">
+                        <i class="fa-solid fa-person-dress fa-3x" style="color: #af0c8cdc;"></i>
+                      </div>
+                    </div>
+                    <div class="info-sup">
+                      <h2 style="color: #56a7f3da; flex: 1 1 0%;" class="infos"><i class="fa-solid fa-circle fa-xs"></i> {{s_sexe.nbr_homme}} <span>Homme</span></h2>
+                      <h2 style="color: #af0c8cdc; flex:1 1 0%" class="infos"><i class="fa-solid fa-circle fa-xs"></i> {{s_sexe.nbr_femme}} <span>Femme</span> </h2>
+                      <h2 style="color: #73d4a4; flex: 1 1 0%;" class="infos"><i class="fa-solid fa-circle fa-xs"></i> {{total}} <span>Total</span> </h2>
+                    </div>
+
+                </div>
+               {% endif %}
+            </div>
+            <div class="info-parametre">
+                <h1>
+                    Informations des 
+                    {% if total %}
+                        {{total}}
+                    {% endif %}
+                    Employés
+                </h1>
+                <div class="lll">
+                <div class="dropdown">
+                    <button class="btn p-50 border-0 bg-transparent " data-bs-toggle="dropdown" style="border: none; background: transparent; color: #05fbf7;">
+                      <i class="fa-solid fa-shield-halved fa-lg ico"></i>
+                        {% if filtre %}
+                            {{filtre}}
+                        {% endif %}
+                    </button>
+                  
+                    <ul class="dropdown-menu dropdown-menu">
+                        <li>
+                            <a href="{% url 'filtre' 'Tout' %}" class="dropdown-item" style="color: #05fbf7;">
+                            <i class="fa-solid fa-people-group" style="color: #05fbf7;"></i>
+                            Tout
+                        </a>
+                        </li>
+                        {% for u in unite %}
+                        <li>
+                            <a href="{% url 'filtre' u %}" class="dropdown-item">{{u}}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn p-50 border-0 bg-transparent dr" id="d_r" data-bs-toggle="dropdown" style="border: none; background: transparent; color: #05fbf7;">
+                      <i class="fa-solid fa-clipboard-list fa-lg ico"></i>
+                        {% if sort %}
+                            {{sort}}
+                        {% endif %}
+                    </button>
+                
+                    <ul class="dropdown-menu dropdown-menu">
+                       <li><a href="{% url 'trie' 'nom'%}" class="dropdown-item">nom</a></li>
+                       <li><a href="{% url 'trie' 'prenom'%}"class="dropdown-item">prenom</a></li>
+                       <li><a href="{% url 'trie' 'date_embauche'%}"class="dropdown-item">date d'embauche</a></li>
+                       <li><a href="{% url 'trie' 'date_ajout'%}"class="dropdown-item">date d'ajout</a></li>
+                       <li><a href="{% url 'trie' 'date_naissance'%}"class="dropdown-item">date de naissance</a></li>
+                       <li><a href="{% url 'trie' 'matricule'%}"class="dropdown-item">matricule</a></li>
+                       <li><a href="{% url 'trie' 'unite'%}"class="dropdown-item">unite</a></li>
+                    </ul>
+                </div>
+            
+                <div class="dropdown">
+                    <button class="btn p-50 border-0 bg-transparent dr"
+                        data-bs-toggle="dropdown" style="border: none; background: transparent; color: #05fbf7;">
+                        <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu" >
+                        <li><a href="{% url 'order' 'croissant'%}" class="dropdown-item">croissant</a></li>
+                        <li><a href="{% url 'order' 'decroissant'%}" class="dropdown-item">decroissant</a></li>
+                    </ul>
+                </div>
+                <button type="button" class="liste_g" onclick="retreciDash()">
+                    <i class="fa-solid fa-arrow-up fa-lg fleche"></i>
+                </button>
+             </div>
+            </div>
+            <div class="liste">
+                <div class="card">
+                    {% if employe %}
+                    {% for e in employe %}
+                        <div class="empl">
+                            <div class="im">
+                                {% if e.photo %}
+                                    <img src="{{ e.photo.url }}" alt="emplPhoto">
+                                {% else %}
+                                    <img src="{% static 'Gestion_RH/img/R.png' %}" alt="photo par défaut">
+                                {% endif %}
+                            </div>
+                            <div class="nomp" style="width: 15%; margin-left:2%; margin-right: 3%;">
+                                <h1>{{e.nom}}</h1>
+                                <h2>{{e.prenom}}</h2>
+                            </div>
+                            <div class="les_unite">
+                                <h1><i class="fa-solid fa-people-group"></i> : {{e.unite}}</h1>
+                                <h2>
+                                    {% if e.categorie_grade == 'Haut gradé'%}
+                                        <i class="fa-solid fa-medal fa-sm" style="color: #06f50a;"></i>
+                                    {% elif e.categorie_grade == 'Sous-officier'%}
+                                        <i class="fa-solid fa-medal fa-sm" style="color: #e4c410;"></i>
+                                    {% else %}
+                                        <i class="fa-solid fa-medal fa-sm" style="color: #e65d19;"></i>
+                                    {% endif %}
+                                    :{{e.grade}}</h2>
+                            </div>
+                            <div  style="display: block;width: 20%;">
+                                <h1><i class="fa-solid fa-id-card"></i> : {{e.matricule}}</h1>
+                                {% if e.genre == 'Homme' %}
+                                    <h2><i class="fa-solid fa-person fa-lg" style="color: #56a7f3da;"></i> {{e.genre}}</h2>
+                                {% else %}
+                                    <h2><i class="fa-solid fa-person-dress fa-lg" style="color: #af0c8cdc;"></i> {{e.genre}}</h2>
+                                {% endif %}
+                            </div>
+                            <div class="los_btn">
+                                <a href="{% url 'voir' e.id %}"><i class="fa-solid fa-eye" style="color: rgb(4, 62, 75);"></i></a>
+                                <a href="{% url 'modifier' e.id %}"><i class="fa-solid fa-pen-to-square" style="color: rgba(6, 198, 92, 0.969);"></i></a>
+                                <a href="{% url 'supprimer' e.id %}" onclick="confirm('voulez vous vraiment supprimer \n{{e.nom}} {{e.prenom}} de {{e.unite}}')"><i class="fa-solid fa-trash" style="color: rgb(221, 13, 144);"></i></a>
+                                <a href="#"><i class="fa-solid fa-envelope" style="color: #f0c907;"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                        <div class="accun-resulat">
+                            <h1>Accun employé trouver! </h1>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="account_profil" onmouseleave="remove_account_profil()">
+            {% for u in username %}
+                {% if u.photo %}
+                    <img src="{{ u.photo.url }}" alt="{{ u.username }}" width="45px" height="45px">
+                {% else %}
+                    <img src="{% static 'Gestion_RH/img/R.png' %}" alt="photo par défaut">
+                {% endif %}
+                <h3>{{u.username}}</h3>
+                <p>{{u.email}}</p>
+            {% endfor %}
+            <a href="#">
+                <i class="fa-solid fa-user fa-2x prof-ico"></i>
+                Modifier Admin
+            </a>
+            <a href="{% url 'logout' %}" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket fa-2x prof-ico"></i>
+                Déconnexion
+            </a>
+      
+        </div>
+        <!-- <div id="loader" style="display:none;">
+            <div class="spinner"></div>
+            <p>Chargement...</p>
+        </div> -->
+    </div>
+    <script src="{% static 'Gestion_RH/js/homeScript.js' %} ?v=2"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    <script src="{% static 'Gestion_RH/js/newHomeScript.js' %} ?v=2"></script>
+</body>
+</html>

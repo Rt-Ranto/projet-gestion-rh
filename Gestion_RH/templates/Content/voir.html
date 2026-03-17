@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'Gestion_RH/css/voirStyle.css'%}?v=2">
+    <link rel="shortcut icon" href="{% static 'Gestion_RH/img/R.png' %}" type="image/x-icon">
+    <title>GRH Admin</title>
+</head>
+<body>
+    <div class="contenu">
+        <div class="sous-contenu">
+            <div class="card1">
+                {% if e.photo %}
+                    <img src="{{ e.photo.url }}" alt="emplPhoto">
+                {% else %}
+                    <img src="{% static 'Gestion_RH/img/R.png' %}" alt="photo par défaut">
+                {% endif %}
+                <div class="nomp">
+                    <h1>{{e.nom}}</h1>
+                    <h2>{{e.prenom}}</h2>
+                </div>
+                <div class="imgAni">
+                    <img src="{% static 'Gestion_RH/img/R.png' %}" alt="logo GRH">
+                </div>
+            </div>
+            <div class="card2">
+                <div class="sous-card1">
+                    <div class="a_propos">
+                        <h1><i class="fa-solid fa-user fa-lg"></i>Apropos</h1>
+                        <h2>sexe:<span>{{e.genre}}
+                            {% if e.genre == 'Homme' %}
+                                <i class="fa-solid fa-person fa-lg" style="color: #56a7f3da;"></i>
+                            {% else %}
+                                <i class="fa-solid fa-person-dress fa-lg" style="color: #af0c8cdc;"></i>
+                            {% endif %}
+                        </span></h2>
+                        <h2>père: <span>{{e.pere}}</span></h2>
+                        <h2>mère: <span>{{e.mere}}</span></h2>
+                        <h2>situation maritale: <span>{{e.situation_maritale}}</span></h2>
+                        <h2>date de naissance: <span>{{e.date_naissance|date:'d/m/Y'}}({{age}} ans)</span></h2>
+                    </div>
+                   <div class="contact">
+                        <h1><i class="fa-solid fa-address-book fa-lg"></i>Contact & Adresse</h1>
+                        <h2><i class="fa-solid fa-phone fa-lg" style="color: rgba(9, 144, 70, 0.969);"></i> <span>{{e.telephone}}</span></h2>
+                        <h2><i class="fa-solid fa-envelope fa-lg" style="color: rgb(193, 172, 12);"></i> <span>{{e.email}}</span></h2>
+                        <h2><i class="fa-solid fa-location-dot fa-lg" style="color: rgb(172, 11, 75);"></i> <span>{{e.adresse}}</span></h2>
+                   </div> 
+
+                </div>
+                <div class="sous-card2">
+                    <h1 class="dd"><i class="fa-solid fa-graduation-cap fa-lg"></i>Diplome & Expérience</h1>
+                    <div class="diplome_experience">    
+                        
+                        <h2>{{e.diplome_experience}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore a qui fugit iste maxime deleniti eligendi placeat aperiam molestiae? Unde, a molestias! Fuga aspernatur consequatur debitis sit officia temporibus voluptate!
+                        Rerum aperiam ea animi dolore possimus praesentium mollitia molestiae adipisci non! Exercitationem earum excepturi officia aspernatur nihil quo numquam pariatur veniam? Ducimus quasi optio eum voluptates dolor, explicabo doloremque dignissimos.</h2>
+                    </div>
+                    <div class="unite">
+                        <h1><i class="fa-solid fa-shield-halved fa-lg"></i>Unité</h1>
+                        <h2><i class="fa-solid fa-flag fa-sm" style="color: #7dbd97;"></i> unité actuel: <span>{{e.unite}}</span></h2>
+                        <h2><i class="fa-solid fa-flag fa-sm" style="color: #aab5aedc;"></i> unité ancien: <span>{{e.unite_ancien}}</span></h2>
+                        <h2> 
+                            {% if e.categorie_grade == 'Haut gradé'%}
+                                <i class="fa-solid fa-medal fa-sm" style="color: #06f50a;"></i>
+                            {% elif e.categorie_grade == 'Sous-officier'%}
+                                <i class="fa-solid fa-medal fa-sm" style="color: #e4c410;"></i>
+                            {% else %}
+                                <i class="fa-solid fa-medal fa-sm" style="color: #e65d19;"></i>
+                            {% endif %}
+                            grade: <span>{{e.grade}} ({{e.categorie_grade}}) </span></h2>
+                        <h2><i class="fa-solid fa-id-card fa-sm" style="color: #ad0e7edc;"></i> matricule: <span>{{e.matricule}}</span></h2>
+                        <h2><i class="fa-solid fa-calendar-days fa-sm" style="color: #81c3cedc;"></i> date d'embauche: <span>{{e.date_embauche|date:'d/m/Y'}}</span></h2>
+                        <h2><i class="fa-solid fa-calendar-days fa-sm" style="color: #360c91dc;"></i> date d'ajout à la base de donnée: <span>{{e.date_ajout|date:'d/m/Y'}}</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ret">
+        <a href="{% url 'home' %}" class="a1"><i class="fa-solid fa-home"></i></a>
+        <a href="#" class="a3"><i class="fa-solid fa-calendar-days " ></i></a>
+        <a href="#" class="a4"><i class="fa-solid fa-mug-hot" ></i></a>
+        <!-- <form action="{% url 'export_pdf' e.id %}" method="post" id="export_pdf">
+            {% csrf_token %}
+            <button type="submit"><i class="fa-solid fa-file-pdf"></i></button>
+        </form> -->
+        <button type="button"
+                data-url="{% url 'export_pdf' emp_id=e.id %}"
+                data-redirect="{% url 'reussie' %}" 
+                onclick="downloadPdf(this)">
+                <i class="fa-solid fa-file-pdf"></i>
+        </button>        
+    </div>
+    <div id="loader" style="display:none;">
+        <div class="spinner"></div>
+        <p>Télechargement du PDF</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    <script src="{% static 'Gestion_RH/js/voirScript.js' %}?v=2"></script>
+</body>
+</html>

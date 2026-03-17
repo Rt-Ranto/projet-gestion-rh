@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'Gestion_RH/img/R.png' %}" type="image/x-icon">
+    <title>GRH Admin</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            font-size: 35px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 600;
+        }
+        a{
+            text-decoration: none;
+            background: transparent;
+            border-radius: 5px;
+            color: rgb(11, 5, 31);
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ajout Reussi.</h1>
+    <a href="{% url 'home' %}">Ok</a>
+</body>
+</html>

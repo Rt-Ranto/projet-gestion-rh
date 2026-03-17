@@ -1,0 +1,185 @@
+@font-face {
+    font-family: font1;
+    src: url(../font/Brand___.ttf);
+  }
+  @font-face {
+    font-family: font2;
+    src: url(../font/ARIAL.TTF);
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .contenu{
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: #470cd0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .cards{
+    width: 98%;
+    height: 150px;
+    background-color: #f0f1f8;
+    border-radius: 15px;
+  }
+  .liste{
+    width: 98%;
+    height: 350px;
+    border-radius: 15px;
+    background-color: #daddf8e3;
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    overflow-x: hidden;
+  }
+  .menuconge{
+    background-color: #0a011f;
+    width: 170px;
+    height: 100%;
+    transition: .7s ease-in-out;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .menuconge div{
+    margin-left: 15px;
+  }
+  .listeconge{
+    flex: 1;
+    height: 100%;
+    display: block;
+    align-items: start;
+  }
+  .listeconge .listenav{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #0a011f;
+  }
+  .listeconge .vraie_liste{
+    width: 100%;
+    flex-wrap: wrap;
+    flex: 1;
+    background-color: #e1caf7;
+  }
+  .listeconge .listenav button{
+    border: none;
+    background:transparent;
+    color: #05fbf7;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .7s ease-in-out;
+  }
+  .floating-search{
+    position: absolute;
+    top:43%;
+    left: 185px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 300px;
+    height: 50px;
+    z-index: 9999;
+    border: 2.5px solid #05fbf7;
+    border-radius: 15px;
+    box-shadow: 4px 5px 6px #0a011f;
+    overflow: hidden;
+    transition: .7s ease;
+    transform: translateX(-300%);
+    /* background-color: #007070; */
+  }
+  .floating-search .entrer_recherche input:focus{
+    width: 100%;
+    height:90%;
+    margin-left: 6px;
+    margin-top: 2px;
+    background-color: #007070;
+    border: none;
+  }
+  .floating-search .entrer_recherche i{
+    border: none;
+    margin-top: 1px;
+    background-color: transparent;
+  }
+  .floating-search .entrer_recherche{
+    background-color: #05065e00;
+    position: absolute;
+    /* top: 22.5px; */
+    /* right: 35%;
+    left:35%; */
+    /* width: 22%; */
+    height: 100%;
+    width: 100%;
+    /* margin-left: 5%; */
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+    backdrop-filter: blur(25px);
+    
+  }
+  .floating-search .entrer_recherche input::placeholder{
+    color: #bae8e7df;
+    font-size: 15px;
+    font-family: font2;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+  .floating-search .entrer_recherche .btn_rech{
+  border: none;
+  background: transparent;
+  margin-top: 1px;
+  
+  }
+  
+  .floating-search .inputfotsn{
+    position: relative;
+    top: -2px;
+    left: -5px;
+    width:85%;
+    height: 100%;
+    margin-left: 0px;
+    background-color: transparent;
+    overflow: hidden;
+  }
+  .floating-search #recherch1{
+    width: 100%;
+    height:100%;
+    /* margin-left: 1px; */
+    margin-top: 2px;
+    background-color: transparent;
+    border: none;
+  }
+
+  .dropdown-menu{
+    position: absolute;
+    top: 100%;
+    right: auto;
+    left: 35%;
+    background-color: #470cd0;
+  }
+  .dropdown-menu li a{
+    color: #f8f8ff;
+  }
+  .dropdown-menu li a:hover{
+    background-color: #0a011f;
+    color: #f0f1f8;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }

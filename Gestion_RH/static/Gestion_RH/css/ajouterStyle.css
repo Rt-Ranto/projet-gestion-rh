@@ -1,0 +1,403 @@
+@font-face {
+    font-family: font1;
+    src: url(../font/Brand___.ttf);
+  }
+  @font-face {
+    font-family: font2;
+    src: url(../font/ARIAL.TTF);
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    /* background: linear-gradient(to bottom right, #00b09b, #96c93d); */
+    background-color: #470cd0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .title{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 10%;
+   
+  }
+  
+  .title h4{
+    font-size: 18px;
+    font-family: font1;
+    color: #1b043c;
+    margin-left: 5px;
+  }
+  .title i{
+    color: #470cd0;
+  }
+  .tt{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-15%);
+  }
+  .form-group {
+      position: relative;
+      /* margin: 3px 0; */
+      /* margin-bottom: 35px; */
+      width: 300px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    height: 40px;
+    padding: 12px 10px;
+    background: transparent;
+    font-size: 16px;
+    border: 2px solid #470cd0;
+    border-radius: 10px;
+    outline: none;
+  }
+  
+  .form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    color: #777;
+    font-size: 14px;
+    font-family: font2;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.3s ease;
+    background: transparent;
+    padding: 0 5px;
+  }
+  
+  /* Quand on clique ou qu'il y a du texte */
+  .form-group input:focus + label,
+  .form-group input:valid + label {
+    top: -0.5px;
+    font-size: 12px;
+    color: #080222;
+    background-color: rgb(255, 255, 255);
+    border-width: 2px;
+    border-color: #080222;
+  }
+  .input-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #110233;
+  }
+  
+  option:active{
+    background-color: #1b043c;
+    color: #f8f8ff;
+  }
+  .container{
+    position: absolute;
+    top: 5%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 350px;
+    height: 460px;
+    display: block;
+    overflow: hidden;
+  }
+  .le_form{
+    position: relative;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    transform: translateX(2px) translateY(0px);
+    width: 320px;
+    max-height: 400px;
+    min-height: 400px;
+  }
+  .info_sup{
+    display: flex;
+    padding-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    width: 320px;
+    max-height: 400px;
+    min-height: 400px;
+    transform: translateX(350px) translateY(-370px);
+    background-color: #fff;
+    /* overflow: hidden; */
+  }
+  /* .info_sup .svt,.contact .svt, .validation .svt{
+    display: flex;
+  } */
+  .info_sup textarea{
+    max-height: 110px;
+  }
+  .svt{
+    display: flex;
+  }
+  .svt button{
+    border-radius: 0;
+  }
+  .contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 320px;
+    max-height: 400px;
+    min-height: 400px;
+    transform: translateX(700px) translateY(-770px);
+    background-color: #fff;
+  }
+  .contact .title{
+    margin-top: 30px;
+  }
+  .poste{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 320px;
+    max-height: 400px;
+    min-height: 400px;
+    transform: translateX(1050px) translateY(-1167px);
+    background-color: #fff;
+  }
+  .poste .title{
+    padding-top: 30px;
+  }
+  .card-body{
+    display: block;
+    /* flex-direction: column; */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .contact .card-body{
+    padding-top: 30px;
+  } 
+  button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .c_f{
+    position: absolute;
+    top: 35%;
+    right: 28%;
+    left:68%;
+    width: 65px;
+    height: 110px;
+    background-color: #110233;
+    border-radius: 12px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* transform: translateX(20%); */
+  }
+  .c_f button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: font2;
+    font-size: 11px;
+    font-weight: 600;
+    color: #777;
+    border: none;
+    border-radius: 35px;
+    background: transparent ;
+    width: 55px;
+    height: 60px;
+  }
+  .c_f button:hover{
+    background-color: #1b043c;
+  }
+
+  .ret{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+  }
+  .ret a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 45px;
+    height: 45px;
+    color: #f8f8ff;
+    background: transparent;
+    border-radius: 50px;
+    text-decoration: none;
+  }
+  .ret a:hover{
+    background-color: #110233;
+  }
+
+  
+  @media (max-width: 600px) {
+    .container {
+      /* flex-direction: column; */
+      top:1%
+    }
+    .c_f{
+      top: 85%;
+      right:45%;
+      left:38%;
+      width: 110px;
+      height: 65px;
+      flex-direction: row;
+    }
+  }
+  .error{
+    position: absolute;
+    top: 45%;
+    left: 0px;
+    width: 220px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    background-color: rgba(221, 141, 233, 0.652);
+    border-radius: 25px;
+    z-index: 1;
+  }
+  .error small{
+    font-family: font2;
+    font-size: 12px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  .le_csv{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    top: 0px;
+    right: 10%;
+    z-index: 2;
+    color: #f8f8ff;
+    background-color: #04541ce0;
+    transition: .7s ease;
+    transform: translateY(-300%);
+  }
+  .le_csv .bbb{
+    width: 100%;
+    height: 39px;
+    background:transparent;
+    display: flex;
+    justify-content: end;
+  }
+  .le_csv .close_frame_csv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 8px;
+    border: none;
+    background:transparent;
+    width: 35px;
+    height: 35px;
+    color: #0cd064;
+  }
+  .le_csv form{
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .le_csv form button{
+    width: 100%;
+  }
+  .le_pdf{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    top: 0px;
+    right: 10%;
+    z-index: 3;
+    color: #f8f8ff;
+    background-color: #530621f8;
+    transition: .7s ease;
+    transform: translateY(-300%);
+  }
+  .le_pdf .bbbb{
+    width: 100%;
+    height: 39px;
+    background:transparent;
+    display: flex;
+    justify-content: end;
+  }
+  .le_pdf .close_frame_pdf{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 8px;
+    border: none;
+    background:transparent;
+    width: 35px;
+    height: 35px;
+    color: #d00c9f;
+  }
+  .le_pdf form{
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .le_pdf form button{
+    width: 100%;
+  }
+
+#loader {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.517);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+    color: white;
+}
+
+.spinner {
+    width: 100px;
+    height: 100px;
+    border: 20px solid #bde7ee59;
+    border-top: 21px solid #0a034a;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
