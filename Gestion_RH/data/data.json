@@ -1,6 +1,6 @@
 {
     "filtre": "Tout",
-    "sort": "prenom",
+    "sort": "matricule",
     "order": "croissant",
     "recherch_query": ""
 }

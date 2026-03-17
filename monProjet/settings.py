@@ -9,10 +9,12 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os 
+from dotenv import load_dotenv
 from pathlib import Path
 from django.db.backends.postgresql.psycopg_any import IsolationLevel
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,10 +82,11 @@ DATABASES = {
         'NAME': 'Gestion_RH',
         'USER': 'postgres',
         'HOST': 'localhost',
-        'PASSWORD': 'LODAFI',
+        'PASSWORD': os.getenv("POSTGRESQLPASSWORD"),
         'PORT' : '5432'
     }
 }
+print(os.getenv("POSTGRESQLPASSWORD"))
 
 
 # Password validation
